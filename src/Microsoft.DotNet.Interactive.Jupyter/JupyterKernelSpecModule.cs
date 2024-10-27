@@ -51,6 +51,7 @@ public class JupyterKernelSpecModule : IJupyterKernelSpecModule
             if (kernelSpecsList.ExitCode == 0)
             {
                 var results = JsonSerializer.Deserialize<KernelSpecListCommandResults>(string.Join(string.Empty, kernelSpecsList.Output));
+                Log.Trace("$$$$$$$$ " + string.Join(string.Empty, kernelSpecsList.Output));
                 return results.kernelspecs?.ToDictionary(r => r.Key, r =>
                 {
                     var spec = r.Value?.spec;
@@ -61,6 +62,7 @@ public class JupyterKernelSpecModule : IJupyterKernelSpecModule
             else
             {
                 // fall back to custom lookup logic 
+                Log.Display("fallback");
                 return LookupInstalledKernels();
             }
         }

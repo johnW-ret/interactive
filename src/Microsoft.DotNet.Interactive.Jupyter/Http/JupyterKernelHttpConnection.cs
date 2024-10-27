@@ -85,6 +85,10 @@ internal class JupyterKernelHttpConnection : IJupyterKernelConnection, IMessageS
         }
 
         var command = JsonSerializer.Serialize(message, MessageFormatter.SerializerOptions);
+
+        Console.WriteLine("sent message:");
+        Console.WriteLine(command);
+
         var buffer = Encoding.UTF8.GetBytes(command);
         await SendToSocketAsync(buffer);
     }
@@ -143,6 +147,10 @@ internal class JupyterKernelHttpConnection : IJupyterKernelConnection, IMessageS
                         ms.Seek(0, SeekOrigin.Begin);
 
                         var message = JsonSerializer.Deserialize<JupyterMessage>(ms, MessageFormatter.SerializerOptions);
+
+                        Console.WriteLine("in buf deser");
+                        Console.WriteLine(message);
+                        
                         PostMessage(message);
                     }
                     catch (Exception e)

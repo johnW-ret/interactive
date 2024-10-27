@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using Microsoft.DotNet.Interactive.Directives;
 using Microsoft.DotNet.Interactive.Jupyter.Connection;
 using Microsoft.DotNet.Interactive.Jupyter.Http;
+using static Pocket.Logger;
 
 namespace Microsoft.DotNet.Interactive.Jupyter;
 
@@ -35,6 +36,7 @@ public sealed class JupyterHttpKernelConnectionOptions : IJupyterKernelConnectio
     public IJupyterConnection GetConnection(ConnectJupyterKernel connectCommand)
     {
         var targetUrl = connectCommand.TargetUrl;
+        Log.Post("@@@@@ " + connectCommand.TargetUrl, Pocket.LogLevel.Trace);
 
         if (targetUrl is null)
         {

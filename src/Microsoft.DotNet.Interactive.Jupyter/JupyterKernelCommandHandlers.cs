@@ -161,6 +161,14 @@ internal partial class JupyterKernel
                                 .Content()
                                 .Do(async m =>
                                 {
+                                    Console.WriteLine("handler message:");
+                                    Console.WriteLine("test1");
+                                    Console.WriteLine(
+                                        m.ToDisplayString()
+                                        //System.Text.Json.JsonSerializer.Serialize(m, GetType(), JsonFormatter.SerializerOptions)
+                                        );
+                                    Console.WriteLine("test2");
+
                                     if (m is ExecuteReply reply)
                                     {
                                         results = reply;
@@ -171,7 +179,9 @@ internal partial class JupyterKernel
                                     }
                                     else
                                     {
+                                        Console.WriteLine("test3");
                                         await HandleExecuteReplyMessageAsync(m, command, context);
+                                        Console.WriteLine("test4");
                                     }
                                 })
                                 .TakeUntil(m => m.MessageType == JupyterMessageContentTypes.Error || (messagesProcessed && results is not null));

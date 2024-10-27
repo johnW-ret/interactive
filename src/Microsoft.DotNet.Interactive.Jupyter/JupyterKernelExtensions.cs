@@ -17,6 +17,13 @@ internal static class JupyterKernelExtensions
 
     public static async Task<bool> RunOnKernelAsync(this JupyterKernel kernel, string code)
     {
+        //var kernelTask = kernel.SendAsync(new SubmitCode(code));
+        ////var first = Task.WaitAny(Task.Delay(10000), kernelTask);
+        ////if (first is 0)
+        ////    return false;
+
+        //var success = (await kernelTask).Events.OfType<CommandSucceeded>().FirstOrDefault();
+
         var results = await kernel.SendAsync(new SubmitCode(code));
         var success = results.Events.OfType<CommandSucceeded>().FirstOrDefault();
 

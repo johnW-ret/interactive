@@ -27,7 +27,7 @@
   "_command.saveAsNotebook.comment": "{Locked='Polyglot Notebook'}",
   "command.fileNew": "New Polyglot Notebook",
   "command.newNotebook": "Polyglot Notebook: Create default notebook",
-  "command.newNotebookNoDefaults": "Polyglot Notebook: Create new blank notebook",
+  "command.newNotebookNoDefaults": "Polyglot Notebook: Hello!",
   "_command.newNotebookNoDefaults.comment": "{Locked='Polyglot Notebook'}",
   "command.setNewNotebookDefaults": "Polyglot Notebook: Set new notebook default values",
   "_command.setNewNotebookDefaults.comment": "{Locked='Polyglot Notebook'}",

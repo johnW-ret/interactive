@@ -32,11 +32,12 @@ internal class JupyterKernelConnector
 
         if (!string.IsNullOrEmpty(_initScript))
         {
+            // causes the blank
             await kernel.RunOnKernelAsync(_initScript);
         }
-
+        
         var configuration = new CommCommandEventChannelConfiguration(commsManager);
-        await kernel.UseConfiguration(configuration);
+        await kernel.UseConfiguration(configuration); // clocks with this commented
 
         kernel.RegisterForDisposal(commsManager);
         kernel.RegisterForDisposal(kernelConnection);

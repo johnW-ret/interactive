@@ -12,6 +12,8 @@ using System.Linq;
 using System.Net;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static Pocket.Logger;
+
 
 namespace Microsoft.DotNet.Interactive.Jupyter.ZMQ;
 
@@ -136,6 +138,8 @@ internal class JupyterConnection : IJupyterConnection
     private async Task<KernelSpec> GetKernelSpecAsync(string kernelSpecName)
     {
         var installedSpecs = await _getKernelSpecs;
+
+        Log.Trace("!!!!!!!!!!!!!! " + string.Join(' ', installedSpecs.Keys));
         if (installedSpecs.ContainsKey(kernelSpecName))
         {
             return installedSpecs[kernelSpecName];

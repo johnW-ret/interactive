@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using Microsoft.DotNet.Interactive.Directives;
 using Microsoft.DotNet.Interactive.Events;
 using Microsoft.CodeAnalysis.Tags;
+using static Pocket.Logger;
 
 namespace Microsoft.DotNet.Interactive.Jupyter;
 
@@ -79,6 +80,7 @@ public class ConnectJupyterKernelDirective : ConnectKernelDirective<ConnectJupyt
 
     private IJupyterConnection GetJupyterConnection(ConnectJupyterKernel connectCommand)
     {
+        Log.Post("tttttt" + System.Text.Json.JsonSerializer.Serialize(connectCommand), Pocket.LogLevel.Trace);
         foreach (var connectionOptions in _connectionCreators)
         {
             var connection = connectionOptions.GetConnection(connectCommand);
